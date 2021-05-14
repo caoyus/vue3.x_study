@@ -26,6 +26,8 @@ Object.defineProperty(data, "count", {
 /**
  * 语法:
  * const p=new Proxy(target,handler)
+ *
+ * Reflect是一个内置的对象,他提供拦截js操作的方法,这些方法与proxy handlers的方法相同,Reflect不是一个函数对象,因此他是不可构造的,也就是不能new,里面是静态方法进行调用.
  */
 new Proxy(data, {
   //拦截读取属性值
@@ -43,3 +45,15 @@ new Proxy(data, {
   },
 });
 ```
+
+## 2.x 和 3.x 声明周期的对比
+
+- ~~beforeCreate() 3 3 33 3333~~ ===>使用 `setup()`;
+- ~~created~~ ===> 使用 `setup()`
+- beforeMount===>onBeforeMount
+- MOunted===>onMounted
+- beforeUpdate===>onUpdated
+- updated ===> onUpdated
+- beforeDestroy===>onBeforeUnmount
+- destroyed====> onUnmount
+- errorCaptured===>onErrorCaptured
