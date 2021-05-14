@@ -48,7 +48,7 @@ new Proxy(data, {
 
 ## 2.x 和 3.x 声明周期的对比
 
-- ~~beforeCreate() 3 3 33 3333~~ ===>使用 `setup()`;
+- ~~beforeCreate()~~ ===>使用 `setup()`;
 - ~~created~~ ===> 使用 `setup()`
 - beforeMount===>onBeforeMount
 - MOunted===>onMounted
@@ -57,3 +57,21 @@ new Proxy(data, {
 - beforeDestroy===>onBeforeUnmount
 - destroyed====> onUnmount
 - errorCaptured===>onErrorCaptured
+
+> 新增的钩子函数
+
+除了 2.x 生命周期等效的项之外,组合 api 还提供了以下调试钩子函数;
+
+- onRenderTracked
+- onRenderTriggered
+
+两个钩子函数都接收一个`DebuggerEvent`,`watchEffect`参数选项的`onTrack`和`onTrigger`类似:
+
+```jsx
+export default {
+  onRenderTriggered(e) {
+    debugger;
+    //检查哪个依赖性导致组件重新渲染
+  },
+};
+```
